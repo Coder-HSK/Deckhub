@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Blackjack from "./Blackjack"; // Importing your game!
+import Blackjack from "./Blackjack"; // Importing your game!\
+import logoImg from "./Logo.png.png"; // Importing the logo image
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap');
@@ -420,7 +421,7 @@ function Hub({ onSelect }) {
     <div className="hub">
       <nav className="nav">
         <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <img src="../public/Logo.png.png" alt="DeckHub" style={{ width: '36px', height: '36px', objectFit: 'contain' }} />DECK<span>HUB</span>
+          <img src={logoImg} alt="DeckHub" style={{ width: '36px', height: '36px', objectFit: 'contain' }} />DECK<span>HUB</span>
           </div>        
           <div className="nav-right">
           <button className="nav-btn">Leaderboard</button>
