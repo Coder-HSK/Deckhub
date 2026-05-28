@@ -54,19 +54,29 @@ const CHIPS = [
 
 // ─── CARD COMPONENT ───────────────────────────────────────────────────
 function Card({ card }) {
+  // Base styling to lock the shape and make it responsive
+  const baseStyle = {
+    width: 'clamp(56px, 14vw, 76px)', // Shrinks on small phones, maxes at 76px
+    aspectRatio: '76 / 110',          // FORCES it to stay the shape of a playing card!
+    borderRadius: 12, 
+    flexShrink: 0,
+    boxShadow: '0 8px 24px rgba(0,0,0,0.06)',
+    display: 'flex', 
+    position: 'relative', 
+    overflow: 'hidden'
+  };
+
   // HIDDEN CARD (Card Back)
   if (card.hidden) return (
     <div style={{
-      width:76, height:110, borderRadius:12, flexShrink:0,
-      background:'#1a1a1a', // Deep black to match the UI buttons
+      ...baseStyle,
+      background:'#1a1a1a', 
       border:'1px solid #333',
-      boxShadow:'0 8px 24px rgba(0,0,0,0.12)',
-      display:'flex', alignItems:'center', justifyContent:'center',
-      position: 'relative', overflow: 'hidden'
+      alignItems:'center', 
+      justifyContent:'center',
     }}>
-      {/* Sleek minimalist logo on the card back */}
       <div style={{
-        fontFamily:'DM Mono, monospace', fontSize:14, fontWeight:500,
+        fontFamily:'DM Mono, monospace', fontSize: 'clamp(10px, 2.5vw, 14px)', fontWeight:500,
         letterSpacing:'0.1em', color:'#fff', opacity:0.8,
         transform: 'rotate(-45deg)'
       }}>
@@ -77,44 +87,43 @@ function Card({ card }) {
 
   // REVEALED CARD (Card Front)
   const red = ['♥','♦'].includes(card.s);
-  const col = red ? '#dc2626' : '#1a1a1a'; // Matches your red chip and black button
+  const col = red ? '#dc2626' : '#1a1a1a'; 
   
   return (
     <div style={{
-      minHeight:'100vh', background:'#f5f4f0', color:'#1a1a1a',
-      display:'flex', flexDirection:'column', alignItems:'center',
-      fontFamily:"'DM Sans','Segoe UI',sans-serif",
-      // Push the whole game down slightly for mobile safe areas
-      padding:'max(env(safe-area-inset-top), 20px) 12px 40px',
+      ...baseStyle,
+      background:'#fff', 
+      border:'1px solid #e8e6e0',
+      flexDirection:'column',
+      justifyContent:'space-between', 
+      padding:'8px 10px',
     }}>
-
-      {/* ── Nav ── */}
-      <div style={{
-        width:'100%', maxWidth:680,
-        display:'flex', justifyContent:'space-between', alignItems:'center',
-        marginBottom:20, paddingTop:10 // Reduced padding since safe-area handles it now
+      {/* Top Left Value */}
+      <div style={{ 
+        fontSize:'clamp(12px, 3vw, 14px)', fontWeight:600, color:col, lineHeight:1, 
+        fontFamily:"'DM Sans', sans-serif", letterSpacing:'-0.05em' 
       }}>
         {card.v}
-        <span style={{ fontSize: 12, display:'block', marginTop: 2 }}>{card.s}</span>
+        <span style={{ fontSize: 'clamp(10px, 2.5vw, 12px)', display:'block', marginTop: 2 }}>{card.s}</span>
       </div>
       
       {/* Center Suit */}
       <div style={{ 
-        fontSize:32, textAlign:'center', color:col, lineHeight:1, 
+        fontSize:'clamp(24px, 6vw, 32px)', textAlign:'center', color:col, lineHeight:1, 
         position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-        opacity: 0.15 // Huge, subtle watermark in the center
+        opacity: 0.15 
       }}>
         {card.s}
       </div>
 
       {/* Bottom Right Value */}
       <div style={{ 
-        fontSize:14, fontWeight:600, color:col, lineHeight:1, 
+        fontSize:'clamp(12px, 3vw, 14px)', fontWeight:600, color:col, lineHeight:1, 
         fontFamily:"'DM Sans', sans-serif", letterSpacing:'-0.05em',
         transform:'rotate(180deg)' 
       }}>
         {card.v}
-        <span style={{ fontSize: 12, display:'block', marginTop: 2 }}>{card.s}</span>
+        <span style={{ fontSize: 'clamp(10px, 2.5vw, 12px)', display:'block', marginTop: 2 }}>{card.s}</span>
       </div>
     </div>
   );
