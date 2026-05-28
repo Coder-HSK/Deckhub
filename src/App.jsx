@@ -357,7 +357,7 @@ const styles = `
     cursor: pointer; transition: all 0.18s; white-space: nowrap;
   }
   .copy-btn:hover { background: #eeecea; color: #333; }
-  
+
   /* ── MOBILE FIXES ── */
   @media (max-width: 768px) {
     .nav { padding: 16px 20px; }
@@ -420,7 +420,7 @@ function Hub({ onSelect }) {
     <div className="hub">
       <nav className="nav">
         <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <img src="/Logo.png" alt="DeckHub" style={{ width: '36px', height: '36px', objectFit: 'contain' }} />DECK<span>HUB</span>
+          <img src="../public/Logo.png" alt="DeckHub" style={{ width: '36px', height: '36px', objectFit: 'contain' }} />DECK<span>HUB</span>
           </div>        
           <div className="nav-right">
           <button className="nav-btn">Leaderboard</button>
