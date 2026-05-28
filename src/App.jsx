@@ -357,6 +357,26 @@ const styles = `
     cursor: pointer; transition: all 0.18s; white-space: nowrap;
   }
   .copy-btn:hover { background: #eeecea; color: #333; }
+  
+  /* ── MOBILE FIXES ── */
+  @media (max-width: 768px) {
+    .nav { padding: 16px 20px; }
+    .hero { padding: 40px 20px 20px; }
+    .section { padding: 0 20px; }
+    
+    /* Stack the Lobby side-panel under the title */
+    .lobby-body { 
+      grid-template-columns: 1fr; 
+      padding: 20px; 
+      gap: 24px;
+    }
+    
+    /* Stack the bottom 3 quick-action buttons */
+    .quick-actions { flex-direction: column; }
+    
+    /* Adjust game card padding */
+    .game-card { padding-right: 16px; gap: 16px; }
+  }
 `;
 
 const GAMES = [

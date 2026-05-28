@@ -81,18 +81,18 @@ function Card({ card }) {
   
   return (
     <div style={{
-      width:76, height:110, borderRadius:12, flexShrink:0,
-      background:'#fff', 
-      border:'1px solid #e8e6e0',
-      boxShadow:'0 8px 24px rgba(0,0,0,0.06)', // Softer, modern shadow
-      display:'flex', flexDirection:'column',
-      justifyContent:'space-between', padding:'8px 10px',
-      position: 'relative'
+      minHeight:'100vh', background:'#f5f4f0', color:'#1a1a1a',
+      display:'flex', flexDirection:'column', alignItems:'center',
+      fontFamily:"'DM Sans','Segoe UI',sans-serif",
+      // Push the whole game down slightly for mobile safe areas
+      padding:'max(env(safe-area-inset-top), 20px) 12px 40px',
     }}>
-      {/* Top Left Value */}
-      <div style={{ 
-        fontSize:14, fontWeight:600, color:col, lineHeight:1, 
-        fontFamily:"'DM Sans', sans-serif", letterSpacing:'-0.05em' 
+
+      {/* ── Nav ── */}
+      <div style={{
+        width:'100%', maxWidth:680,
+        display:'flex', justifyContent:'space-between', alignItems:'center',
+        marginBottom:20, paddingTop:10 // Reduced padding since safe-area handles it now
       }}>
         {card.v}
         <span style={{ fontSize: 12, display:'block', marginTop: 2 }}>{card.s}</span>
@@ -489,7 +489,7 @@ export default function Blackjack({onExit}) {
                     <span>{hands.length>1?`Hand ${i+1}`:'You'} — {calcHand(h.cards)}</span>
                     <ResultBadge result={h.result}/>
                   </div>
-                  <div style={{ display:'flex', gap:8, justifyContent:'center' }}>
+                  <div style={{ display:'flex', gap:8, justifyContent:'center', flexWrap:'wrap' }}>
                     {h.cards.map(c=><Card key={c.id} card={c}/>)}
                   </div>
                   <div style={{ marginTop:8, fontSize:12, color:'#aaa', fontFamily:'DM Mono,monospace' }}>
