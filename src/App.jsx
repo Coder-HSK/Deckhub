@@ -420,7 +420,7 @@ function Hub({ onSelect }) {
     <div className="hub">
       <nav className="nav">
         <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <img src="../public/Logo.png" alt="DeckHub" style={{ width: '36px', height: '36px', objectFit: 'contain' }} />DECK<span>HUB</span>
+          <img src="../public/Logo.png.png" alt="DeckHub" style={{ width: '36px', height: '36px', objectFit: 'contain' }} />DECK<span>HUB</span>
           </div>        
           <div className="nav-right">
           <button className="nav-btn">Leaderboard</button>
